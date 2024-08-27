@@ -5,7 +5,7 @@ import {
   Link,
 } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/login/Login";
+import Login from "./pages/login/Auth";
 
 function App() {
   const router = createBrowserRouter([

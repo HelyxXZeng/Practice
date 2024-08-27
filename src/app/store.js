@@ -1,10 +1,13 @@
 // store.js
 import { configureStore } from "@reduxjs/toolkit";
-import loginReducer from '../features/login/Login'; // Đảm bảo đường dẫn đúng với file slice
-
+import loginReducer from '../features/login/Login'; 
+import signupReducer from '../features/signup/Signup'; 
+import authReducer from '../features/authState/AuthState'
 const store = configureStore({
     reducer: {
-        login: loginReducer
+        login: loginReducer,
+        signup: signupReducer,
+        authState: authReducer,
     }
 });
 

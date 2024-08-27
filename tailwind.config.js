@@ -12,6 +12,7 @@ export default {
         'text-white-main': '#EFEFEF',
         'text-gray-main': '#DDDDDD',
         'text-blue-main': '#216CE3',
+        'blue-hover': '#195cc8',
         'border-field':  '#455E87',
       }
     },

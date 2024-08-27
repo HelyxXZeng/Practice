@@ -2,7 +2,7 @@
   font-family: Roboto, san-serif;
   color: #EFEFEF;
 }
-/* body{
+body{
   height: 100vh;
-  
-} */
+  overflow-y: hidden;
+}
