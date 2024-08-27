@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField, Checkbox, Button, FormControlLabel } from "@mui/material";
 import { Link } from "react-router-dom";
-import { setEmail, setPassword, setRememberMe } from "../../features/login/Login"; // Đảm bảo đường dẫn đúng
+import { setEmail, setPassword, setRememberMe } from "../../features/login/Login"; 
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,16 +16,14 @@ const Login = () => {
       setCurrentBanner((prev) => (prev + 1) % banners.length);
     }, 3000);
 
-    return () => clearInterval(interval); // Dọn dẹp khi component unmount
+    return () => clearInterval(interval);
   }, [banners.length]);
 
   const handleLogin = () => {
-    // Dispatch actions to save current field values to Redux store
     dispatch(setEmail(email));
     dispatch(setPassword(password));
     dispatch(setRememberMe(rememberMe));
 
-    // After dispatching actions, log the information from Redux store
     console.log("Email:", email);
     console.log("Password:", password);
     console.log("Remember Me:", rememberMe);
@@ -33,15 +31,13 @@ const Login = () => {
 
   return (
     <div className="login bg-blue-background-1 flex h-screen">
-      <div className="leftContainer w-1/2 flex justify-center items-center p-10">
+      <div className="leftContainer md:w-1/2 w-full flex justify-center items-center p-10">
         <form
           action=""
           className="flex bg-blue-background-2 rounded-[32px] flex-col items-center p-8 space-y-4  w-[440px] h-[615px]"
         >
           <img src="/TMA-icon.png" alt="TMA logo" className="h-[60px] w-auto" />
           <h4 className="text-text-blue-main font-semibold text-2xl self-start pt-8">Log In</h4>
-
-          {/* Email Field */}
           <TextField
             variant="outlined"
             label="Email"
@@ -70,8 +66,6 @@ const Login = () => {
               },
             }}
           />
-
-          {/* Password Field */}
           <TextField
             variant="outlined"
             label="Password"
@@ -101,8 +95,6 @@ const Login = () => {
               },
             }}
           />
-
-          {/* Checkbox with label */}
           <div className="flex justify-between items-center w-full">
             <FormControlLabel
               control={
@@ -141,7 +133,7 @@ const Login = () => {
           <img src="/fake-langs-button.png" alt="" className="h-10 w-40" />
         </form>
       </div>
-      <div className="rightContainer hide md:flex">
+      <div className="rightContainer hidden md:flex">
         <img src={banners[currentBanner]} alt="Banner" className="h-full w-auto" />
       </div>
     </div>
