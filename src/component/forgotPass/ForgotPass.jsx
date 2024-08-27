@@ -67,9 +67,17 @@ const ForgotPass = () => {
             "&.Mui-focused fieldset": {
               borderColor: "#455E87",
             },
+            "& .MuiInputBase-input": {
+              height: "42px",
+              padding: "0 14px", 
+            },
+            "& .MuiFormLabel-root": {
+              top: "-6px",
+            },
           },
           "& .MuiInputLabel-root": {
             color: "#455E87",
+            top: "-6px",
           },
           "& .MuiInputBase-input": {
             color: "#DDDDDD",
@@ -77,6 +85,7 @@ const ForgotPass = () => {
           "& .MuiInputBase-input::placeholder": {
             color: "#DDDDDD",
             opacity: 1,
+            top: "-6px",
           },
         }}
       />

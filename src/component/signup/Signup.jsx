@@ -142,29 +142,38 @@ const Signup = () => {
           helperText={fnameError}
           fullWidth
           sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#455E87",
-              },
-              "&:hover fieldset": {
-                borderColor: "#455E87",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#455E87",
-              },
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "#455E87",
             },
-            "& .MuiInputLabel-root": {
-              color: "#455E87",
+            "&:hover fieldset": {
+              borderColor: "#455E87",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#455E87",
             },
             "& .MuiInputBase-input": {
-              color: "#DDDDDD",
+              height: "42px",
+              padding: "0 14px", 
             },
-            "& .MuiInputBase-input::placeholder": {
-              color: "#DDDDDD",
-              opacity: 1,
+            "& .MuiFormLabel-root": {
+              top: "-6px",
             },
-          }}
-        />
+          },
+          "& .MuiInputLabel-root": {
+            color: "#455E87",
+            top: "-6px",
+          },
+          "& .MuiInputBase-input": {
+            color: "#DDDDDD",
+          },
+          "& .MuiInputBase-input::placeholder": {
+            color: "#DDDDDD",
+            opacity: 1,
+            top: "-6px",
+          },
+        }}
+      />
 
         <TextField
           required
@@ -177,29 +186,38 @@ const Signup = () => {
           helperText={lnameError}
           fullWidth
           sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": {
-                borderColor: "#455E87",
-              },
-              "&:hover fieldset": {
-                borderColor: "#455E87",
-              },
-              "&.Mui-focused fieldset": {
-                borderColor: "#455E87",
-              },
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "#455E87",
             },
-            "& .MuiInputLabel-root": {
-              color: "#455E87",
+            "&:hover fieldset": {
+              borderColor: "#455E87",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#455E87",
             },
             "& .MuiInputBase-input": {
-              color: "#DDDDDD",
+              height: "42px",
+              padding: "0 14px", 
             },
-            "& .MuiInputBase-input::placeholder": {
-              color: "#DDDDDD",
-              opacity: 1,
+            "& .MuiFormLabel-root": {
+              top: "-6px",
             },
-          }}
-        />
+          },
+          "& .MuiInputLabel-root": {
+            color: "#455E87",
+            top: "-6px",
+          },
+          "& .MuiInputBase-input": {
+            color: "#DDDDDD",
+          },
+          "& .MuiInputBase-input::placeholder": {
+            color: "#DDDDDD",
+            opacity: 1,
+            top: "-6px",
+          },
+        }}
+      />
       </div>
       <TextField
         required
@@ -222,9 +240,17 @@ const Signup = () => {
             "&.Mui-focused fieldset": {
               borderColor: "#455E87",
             },
+            "& .MuiInputBase-input": {
+              height: "42px",
+              padding: "0 14px", 
+            },
+            "& .MuiFormLabel-root": {
+              top: "-6px",
+            },
           },
           "& .MuiInputLabel-root": {
             color: "#455E87",
+            top: "-6px",
           },
           "& .MuiInputBase-input": {
             color: "#DDDDDD",
@@ -232,6 +258,7 @@ const Signup = () => {
           "& .MuiInputBase-input::placeholder": {
             color: "#DDDDDD",
             opacity: 1,
+            top: "-6px",
           },
         }}
       />
@@ -258,9 +285,17 @@ const Signup = () => {
             "&.Mui-focused fieldset": {
               borderColor: "#455E87",
             },
+            "& .MuiInputBase-input": {
+              height: "42px",
+              padding: "0 14px", 
+            },
+            "& .MuiFormLabel-root": {
+              top: "-6px",
+            },
           },
           "& .MuiInputLabel-root": {
             color: "#455E87",
+            top: "-6px",
           },
           "& .MuiInputBase-input": {
             color: "#DDDDDD",
@@ -268,6 +303,7 @@ const Signup = () => {
           "& .MuiInputBase-input::placeholder": {
             color: "#DDDDDD",
             opacity: 1,
+            top: "-6px",
           },
         }}
       />
@@ -293,9 +329,17 @@ const Signup = () => {
             "&.Mui-focused fieldset": {
               borderColor: "#455E87",
             },
+            "& .MuiInputBase-input": {
+              height: "42px",
+              padding: "0 14px", 
+            },
+            "& .MuiFormLabel-root": {
+              top: "-6px",
+            },
           },
           "& .MuiInputLabel-root": {
             color: "#455E87",
+            top: "-6px",
           },
           "& .MuiInputBase-input": {
             color: "#DDDDDD",
@@ -303,6 +347,7 @@ const Signup = () => {
           "& .MuiInputBase-input::placeholder": {
             color: "#DDDDDD",
             opacity: 1,
+            top: "-6px",
           },
         }}
       />
@@ -327,9 +372,17 @@ const Signup = () => {
             "&.Mui-focused fieldset": {
               borderColor: "#455E87",
             },
+            "& .MuiInputBase-input": {
+              height: "42px",
+              padding: "0 14px", 
+            },
+            "& .MuiFormLabel-root": {
+              top: "-6px",
+            },
           },
           "& .MuiInputLabel-root": {
             color: "#455E87",
+            top: "-6px",
           },
           "& .MuiInputBase-input": {
             color: "#DDDDDD",
@@ -337,6 +390,7 @@ const Signup = () => {
           "& .MuiInputBase-input::placeholder": {
             color: "#DDDDDD",
             opacity: 1,
+            top: "-6px",
           },
         }}
       />
@@ -349,7 +403,7 @@ const Signup = () => {
           backgroundColor: "#216CE3",
           color: "#FFFFFF",
           width: "100%",
-          height: "50px",
+          height: "42px",
           "&:hover": {
             backgroundColor: "#194A9E",
           },
