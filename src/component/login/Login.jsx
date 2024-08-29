@@ -66,7 +66,7 @@ const Login = () => {
       <TextField
         required
         variant="outlined"
-        label={t("emailPlaceHolder")}
+        label="Email"
         placeholder={t("emailPlaceHolder")}
         value={email}
         onChange={(event) => dispatch(setEmail(event.target.value))}

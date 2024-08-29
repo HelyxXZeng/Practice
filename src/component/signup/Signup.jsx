@@ -221,7 +221,7 @@ const Signup = () => {
       <TextField
         required
         variant="outlined"
-        label={t("emailPlaceHolder")}
+        label="Email"
         placeholder={t("emailPlaceHolder")}
         value={email}
         onChange={(event) => dispatch(setEmail(event.target.value))}
@@ -266,6 +266,7 @@ const Signup = () => {
         variant="outlined"
         label={t("passLabel")}
         placeholder={t("passPlaceHolder")}
+        type={"password"}
         value={password}
         onChange={(event) => dispatch(setPassword(event.target.value))}
         error={!!passwordError}
@@ -310,6 +311,7 @@ const Signup = () => {
         label={t("signup.cpassLabel")}
         placeholder={t("signup.cpassPlaceHolder")}
         value={confirmPassword}
+        type={"password"}
         onChange={(event) =>
           dispatch(setConfirmPassword(event.target.value))
         }

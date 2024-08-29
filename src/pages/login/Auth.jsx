@@ -71,6 +71,10 @@ const Auth = () => {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
+                "&.MuiToggleButtonGroup-firstButton": {
+                  borderTopRightRadius: '8px',
+                  borderBottomRightRadius: '8px',
+                }
               }}
             >
               <img
@@ -93,6 +97,9 @@ const Auth = () => {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
+                "&.MuiToggleButtonGroup-middleButton": {
+                  borderRadius: "8px"
+                }
               }}
             >
               <img
@@ -115,6 +122,10 @@ const Auth = () => {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
+                "&.MuiToggleButtonGroup-lastButton": {
+                  borderTopLeftRadius: '8px',
+                  borderBottomLeftRadius: '8px',
+                }
               }}
             >
               <img
