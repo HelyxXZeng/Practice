@@ -1,56 +1,57 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setAuthState } from "../../features/authState/AuthState";
 import { Button, TextField } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const ForgotPass = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const { t } = useTranslation();
 
   const validateEmail = (email) => {
     if (!email) {
-      return "This field is required";
+      return t("errors.required");
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return "The input is not a valid email";
+      return t("errors.invalidEmail");
     }
     return "";
   };
 
   const handleResetPassword = () => {
     const emailValidationError = validateEmail(email);
-
     setEmailError(emailValidationError);
 
     if (!emailValidationError) {
-      console.log("We will send an email to:", email);
+      console.log(t("forgot.description"), email);
     }
   };
 
   return (
     <form action="" className="flex flex-col space-y-4 w-auto min-w-[240px]">
       <h4 className="text-text-blue-main font-semibold text-2xl self-start pt-8">
-        Forgot Password
+        {t("forgot.title")}
       </h4>
       <h5 className="text-m font-light self-start -translate-y-2 text-text-gray-main">
-        We will send an email to your email.
+        {t("forgot.description")}
       </h5>
       <span
         className="text-blue-400 text-m font-light self-start -translate-y-2 underline cursor-pointer hover:text-blue-hover"
         onClick={() => {
-          setEmail('');
+          setEmail("");
           dispatch(setAuthState("login"));
         }}
       >
-        Go back
+        {t("forgot.goback")}
       </span>
       <TextField
         required
         variant="outlined"
-        label="Email"
-        placeholder="Enter Your Email"
+        label={t("emailPlaceHolder")}
+        placeholder={t("emailPlaceHolder")}
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         error={!!emailError}
@@ -69,7 +70,7 @@ const ForgotPass = () => {
             },
             "& .MuiInputBase-input": {
               height: "42px",
-              padding: "0 14px", 
+              padding: "0 14px",
             },
             "& .MuiFormLabel-root": {
               top: "-6px",
@@ -106,17 +107,17 @@ const ForgotPass = () => {
           textTransform: "none",
         }}
       >
-        <span className="font-semibold">Send email now</span>
+        <span className="font-semibold">{t("forgot.btn")}</span>
       </Button>
       <p className="signUp self-start font-normal">
-        Don’t have an account yet?{" "}
+        {t("donthaveacc")}{" "}
         <span
           className="text-text-blue-main font-semibold hover:text-blue-hover cursor-pointer"
           onClick={() => {
             dispatch(setAuthState("signup"));
           }}
         >
-          Sign Up
+          {t("signup.title")}
         </span>
       </p>
     </form>

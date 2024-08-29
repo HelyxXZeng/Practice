@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   setEmail,
   setPassword,
@@ -10,6 +11,7 @@ import { setAuthState } from "../../features/authState/AuthState";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { email, password, rememberMe } = useSelector(
     (state) => state.login
@@ -20,24 +22,25 @@ const Login = () => {
 
   const validateEmail = (email) => {
     if (!email) {
-      return "This field is required";
+      return t("errors.required");
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return "The input is not a valid email";
+      return t("errors.invalidEmail");
     }
     return "";
   };
 
   const validatePassword = (password) => {
     if (!password) {
-      return "This field is required";
+      return t("errors.required");
     }
     if (password.length < 6) {
-      return "The password must be at least 6 characters";
+      return t("errors.passlength");
     }
     return "";
   };
+
   const handleLogin = () => {
     const emailValidationError = validateEmail(email);
     const passwordValidationError = validatePassword(password);
@@ -54,16 +57,17 @@ const Login = () => {
       console.log("Remember Me:", rememberMe);
     }
   };
+
   return (
     <form action="" className="flex flex-col space-y-4 w-auto min-w-[240px]">
       <h4 className="text-text-blue-main font-semibold text-2xl self-start pt-8">
-        Log In
+        {t("login.title")}
       </h4>
       <TextField
         required
         variant="outlined"
-        label="Email"
-        placeholder="Your Email"
+        label={t("emailPlaceHolder")}
+        placeholder={t("emailPlaceHolder")}
         value={email}
         onChange={(event) => dispatch(setEmail(event.target.value))}
         error={!!emailError}
@@ -106,8 +110,8 @@ const Login = () => {
       <TextField
         required
         variant="outlined"
-        label="Password"
-        placeholder="Your Password"
+        label={t("passLabel")}
+        placeholder={t("passPlaceHolder")}
         type={"password"}
         value={password}
         onChange={(event) => dispatch(setPassword(event.target.value))}
@@ -159,7 +163,7 @@ const Login = () => {
               color="primary"
             />
           }
-          label="Remember Me"
+          label={t("login.rememe")}
           sx={{ color: "#455E87" }}
         />
         <span
@@ -169,7 +173,7 @@ const Login = () => {
           }}
           className="text-text-blue-main font-semibold hover:text-blue-hover cursor-pointer"
         >
-          Forgot Password?
+          {t("forgot.title")}
         </span>
       </div>
 
@@ -189,10 +193,10 @@ const Login = () => {
           textTransform: "none",
         }}
       >
-        <span className="font-semibold">Log In</span>
+        <span className="font-semibold">{t("login.title")}</span>
       </Button>
       <p className="signUp self-start font-normal">
-        Don’t have an account yet?{" "}
+        {t("donthaveacc")}{" "}
         <span
           className="text-text-blue-main font-semibold hover:text-blue-hover cursor-pointer"
           onClick={() => {
@@ -200,7 +204,7 @@ const Login = () => {
             dispatch(setAuthState("signup"));
           }}
         >
-          Sign Up
+          {t("signup.title")}
         </span>
       </p>
     </form>

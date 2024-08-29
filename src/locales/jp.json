@@ -1,0 +1,36 @@
+{
+    "emailPlaceHolder": "あなたのメールアドレス",
+    "passLabel": "パスワード",
+    "passPlaceHolder": "あなたのパスワード",
+    "donthaveacc": "まだアカウントをお持ちでないですか？",
+    "login": {
+      "title": "ログイン",
+      "rememe": "ログイン状態を保持する"
+    },
+    "forgot": {
+      "title": "パスワードをお忘れですか",
+      "description": "メールアドレスにメールを送信します",
+      "goback": "< 戻る",
+      "btn": "今すぐメールを送信"
+    },
+    "signup": {
+      "title": "サインアップ",
+      "FNLabel": "名",
+      "FNPlaceHolder": "あなたの名前",
+      "LNLabel": "姓",
+      "LNPlaceHolder": "あなたの名字",
+      "cpassLabel": "パスワードの確認",
+      "cpassPlaceHolder": "パスワードを確認する",
+      "phoneLabel": "電話番号",
+      "phonePlaceHolder": "あなたの電話番号",
+      "alreadyhaveacc": "すでにアカウントをお持ちですか？"
+    },
+    "errors": {
+      "required": "この項目は必須です",
+      "invalidEmail": "入力されたメールアドレスは無効です",
+      "passlength": "パスワードは6文字以上である必要があります",
+      "passmissmatch": "パスワードが一致しません",
+      "invalidPhone": "電話番号が無効です"
+    }
+  }
+  

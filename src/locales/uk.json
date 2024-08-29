@@ -1,0 +1,35 @@
+{
+  "emailPlaceHolder": "Your Email",
+  "passLabel": "Password",
+  "passPlaceHolder": "Your Password",
+  "donthaveacc": "Don’t have an account yet?",
+  "login": {
+    "title": "Log In",
+    "rememe": "Remember Me"
+  },
+  "forgot": {
+    "title": "Forgot Password",
+    "description": "We will send an email to your email",
+    "goback": "< Go Back",
+    "btn": "Send email now"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "FNLabel": "First Name",
+    "FNPlaceHolder": "Your First Name",
+    "LNLabel": "Last Name",
+    "LNPlaceHolder": "Your Last Name",
+    "cpassLabel": "Confirm Password",
+    "cpassPlaceHolder": "Confirm Your Password",
+    "phoneLabel": "Phone Number",
+    "phonePlaceHolder": "Your Phone Number",
+    "alreadyhaveacc": "Already have an account?"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "The input is not a valid email",
+    "passlength": "The password must be at least 6 characters",
+    "passmissmatch": "The passwords do not match",
+    "invalidPhone": "The phone number is not valid"
+  }
+}

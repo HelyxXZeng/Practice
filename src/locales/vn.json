@@ -1,0 +1,36 @@
+{
+    "emailPlaceHolder": "Email của bạn",
+    "passLabel": "Mật khẩu",
+    "passPlaceHolder": "Mật khẩu của bạn",
+    "donthaveacc": "Chưa có tài khoản?",
+    "login": {
+      "title": "Đăng nhập",
+      "rememe": "Ghi nhớ tài khoản"
+    },
+    "forgot": {
+      "title": "Quên mật khẩu",
+      "description": "Chúng tôi sẽ gửi email đến địa chỉ email của bạn",
+      "goback": "< Quay lại",
+      "btn": "Gửi email ngay"
+    },
+    "signup": {
+      "title": "Đăng ký",
+      "FNLabel": "Tên",
+      "FNPlaceHolder": "Tên của bạn",
+      "LNLabel": "Họ",
+      "LNPlaceHolder": "Họ của bạn",
+      "cpassLabel": "Xác nhận mật khẩu",
+      "cpassPlaceHolder": "Xác nhận mật khẩu của bạn",
+      "phoneLabel": "Số điện thoại",
+      "phonePlaceHolder": "Số điện thoại của bạn",
+      "alreadyhaveacc": "Đã có tài khoản?"
+    },
+    "errors": {
+      "required": "Trường này là bắt buộc",
+      "invalidEmail": "Email không hợp lệ",
+      "passlength": "Mật khẩu phải có ít nhất 6 ký tự",
+      "passmissmatch": "Mật khẩu không khớp",
+      "invalidPhone": "Số điện thoại không hợp lệ"
+    }
+  }
+  

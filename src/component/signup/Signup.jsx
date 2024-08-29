@@ -8,10 +8,11 @@ import {
   setPhoneNumber,
   clearSignup,
 } from "../../features/signup/Signup";
-import { TextField, Checkbox, Button, FormControlLabel } from "@mui/material";
-
+import { TextField, Button } from "@mui/material";
 import { setAuthState } from "../../features/authState/AuthState";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 const Signup = () => {
   const { email, password, fname, lname, confirmPassword, phoneNumber } =
     useSelector((state) => state.signup);
@@ -22,61 +23,60 @@ const Signup = () => {
   const [lnameError, setLNameError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [phoneNumberError, setPhoneNumberError] = useState("");
+  const { t } = useTranslation();
 
   const validateEmail = (email) => {
     if (!email) {
-      return "This field is required";
+      return t("errors.required");
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return "The input is not a valid email";
+      return t("errors.invalidEmail");
     }
     return "";
   };
 
   const validatePassword = (password) => {
     if (!password) {
-      return "This field is required";
+      return t("errors.required");
     }
     if (password.length < 6) {
-      return "The password must be at least 6 characters";
+      return t("errors.passlength");
     }
     return "";
   };
 
   const validateFName = (fname) => {
-    console.log(fname);
     if (!fname) {
-      return "This field is required";
+      return t("errors.required");
     }
     return "";
   };
 
   const validateLName = (lname) => {
-    console.log(lname);
     if (!lname) {
-      return "This field is required";
+      return t("errors.required");
     }
     return "";
   };
 
   const validateConfirmPassword = (password, confirmPassword) => {
     if (!confirmPassword) {
-      return "This field is required";
+      return t("errors.required");
     }
     if (password !== confirmPassword) {
-      return "The passwords do not match";
+      return t("errors.passmissmatch");
     }
     return "";
   };
 
   const validatePhoneNumber = (phoneNumber) => {
     if (!phoneNumber) {
-      return "This field is required";
+      return t("errors.required");
     }
     const phoneRegex = /^[0-9]{10,15}$/;
     if (!phoneRegex.test(phoneNumber)) {
-      return "The phone number is not valid";
+      return t("errors.invalidPhone");
     }
     return "";
   };
@@ -98,7 +98,7 @@ const Signup = () => {
     setPasswordError(passwordValidationError);
     setConfirmPasswordError(confirmPasswordValidationError);
     setPhoneNumberError(phoneNumberValidationError);
-    console.log(!fnameValidationError, !lnameValidationError);
+
     if (
       !fnameValidationError &&
       !lnameValidationError &&
@@ -128,102 +128,101 @@ const Signup = () => {
   return (
     <form action="" className="flex flex-col space-y-4 w-auto min-w-[240px]">
       <h4 className="text-text-blue-main font-semibold text-2xl self-start pt-8">
-        Sign Up
+        {t("signup.title")}
       </h4>
       <div className="nameInputField flex-row flex justify-between space-x-4">
         <TextField
           required
           variant="outlined"
-          label="First Name"
-          placeholder="Your First Name"
+          label={t("signup.FNLabel")}
+          placeholder={t("signup.FNPlaceHolder")}
           value={fname}
           onChange={(event) => dispatch(setFName(event.target.value))}
           error={!!fnameError}
           helperText={fnameError}
           fullWidth
           sx={{
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "#455E87",
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#455E87",
+              },
+              "&:hover fieldset": {
+                borderColor: "#455E87",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#455E87",
+              },
+              "& .MuiInputBase-input": {
+                height: "42px",
+                padding: "0 14px",
+              },
+              "& .MuiFormLabel-root": {
+                top: "-6px",
+              },
             },
-            "&:hover fieldset": {
-              borderColor: "#455E87",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#455E87",
-            },
-            "& .MuiInputBase-input": {
-              height: "42px",
-              padding: "0 14px", 
-            },
-            "& .MuiFormLabel-root": {
+            "& .MuiInputLabel-root": {
+              color: "#455E87",
               top: "-6px",
             },
-          },
-          "& .MuiInputLabel-root": {
-            color: "#455E87",
-            top: "-6px",
-          },
-          "& .MuiInputBase-input": {
-            color: "#DDDDDD",
-          },
-          "& .MuiInputBase-input::placeholder": {
-            color: "#DDDDDD",
-            opacity: 1,
-            top: "-6px",
-          },
-        }}
-      />
-
+            "& .MuiInputBase-input": {
+              color: "#DDDDDD",
+            },
+            "& .MuiInputBase-input::placeholder": {
+              color: "#DDDDDD",
+              opacity: 1,
+              top: "-6px",
+            },
+          }}
+        />
         <TextField
           required
           variant="outlined"
-          label="Last Name"
-          placeholder="Your Last Name"
+          label={t("signup.LNLabel")}
+          placeholder={t("signup.LNPlaceHolder")}
           value={lname}
           onChange={(event) => dispatch(setLName(event.target.value))}
           error={!!lnameError}
           helperText={lnameError}
           fullWidth
           sx={{
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "#455E87",
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#455E87",
+              },
+              "&:hover fieldset": {
+                borderColor: "#455E87",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#455E87",
+              },
+              "& .MuiInputBase-input": {
+                height: "42px",
+                padding: "0 14px",
+              },
+              "& .MuiFormLabel-root": {
+                top: "-6px",
+              },
             },
-            "&:hover fieldset": {
-              borderColor: "#455E87",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#455E87",
-            },
-            "& .MuiInputBase-input": {
-              height: "42px",
-              padding: "0 14px", 
-            },
-            "& .MuiFormLabel-root": {
+            "& .MuiInputLabel-root": {
+              color: "#455E87",
               top: "-6px",
             },
-          },
-          "& .MuiInputLabel-root": {
-            color: "#455E87",
-            top: "-6px",
-          },
-          "& .MuiInputBase-input": {
-            color: "#DDDDDD",
-          },
-          "& .MuiInputBase-input::placeholder": {
-            color: "#DDDDDD",
-            opacity: 1,
-            top: "-6px",
-          },
-        }}
-      />
+            "& .MuiInputBase-input": {
+              color: "#DDDDDD",
+            },
+            "& .MuiInputBase-input::placeholder": {
+              color: "#DDDDDD",
+              opacity: 1,
+              top: "-6px",
+            },
+          }}
+        />
       </div>
       <TextField
         required
         variant="outlined"
-        label="Email"
-        placeholder="Your Email"
+        label={t("emailPlaceHolder")}
+        placeholder={t("emailPlaceHolder")}
         value={email}
         onChange={(event) => dispatch(setEmail(event.target.value))}
         error={!!emailError}
@@ -242,7 +241,7 @@ const Signup = () => {
             },
             "& .MuiInputBase-input": {
               height: "42px",
-              padding: "0 14px", 
+              padding: "0 14px",
             },
             "& .MuiFormLabel-root": {
               top: "-6px",
@@ -262,13 +261,11 @@ const Signup = () => {
           },
         }}
       />
-
       <TextField
         required
         variant="outlined"
-        label="Password"
-        placeholder="Your Password"
-        type={"password"}
+        label={t("passLabel")}
+        placeholder={t("passPlaceHolder")}
         value={password}
         onChange={(event) => dispatch(setPassword(event.target.value))}
         error={!!passwordError}
@@ -287,7 +284,7 @@ const Signup = () => {
             },
             "& .MuiInputBase-input": {
               height: "42px",
-              padding: "0 14px", 
+              padding: "0 14px",
             },
             "& .MuiFormLabel-root": {
               top: "-6px",
@@ -310,11 +307,12 @@ const Signup = () => {
       <TextField
         required
         variant="outlined"
-        label="Confirm Password"
-        placeholder="Confirm Your Password"
-        type={"password"}
+        label={t("signup.cpassLabel")}
+        placeholder={t("signup.cpassPlaceHolder")}
         value={confirmPassword}
-        onChange={(event) => dispatch(setConfirmPassword(event.target.value))}
+        onChange={(event) =>
+          dispatch(setConfirmPassword(event.target.value))
+        }
         error={!!confirmPasswordError}
         helperText={confirmPasswordError}
         fullWidth
@@ -331,7 +329,7 @@ const Signup = () => {
             },
             "& .MuiInputBase-input": {
               height: "42px",
-              padding: "0 14px", 
+              padding: "0 14px",
             },
             "& .MuiFormLabel-root": {
               top: "-6px",
@@ -354,10 +352,12 @@ const Signup = () => {
       <TextField
         required
         variant="outlined"
-        label="Phone Number"
-        placeholder="Your Phone Number"
+        label={t("signup.phoneLabel")}
+        placeholder={t("signup.phonePlaceHolder")}
         value={phoneNumber}
-        onChange={(event) => dispatch(setPhoneNumber(event.target.value))}
+        onChange={(event) =>
+          dispatch(setPhoneNumber(event.target.value))
+        }
         error={!!phoneNumberError}
         helperText={phoneNumberError}
         fullWidth
@@ -374,7 +374,7 @@ const Signup = () => {
             },
             "& .MuiInputBase-input": {
               height: "42px",
-              padding: "0 14px", 
+              padding: "0 14px",
             },
             "& .MuiFormLabel-root": {
               top: "-6px",
@@ -394,7 +394,6 @@ const Signup = () => {
           },
         }}
       />
-
       <Button
         variant="contained"
         onClick={handleSignUp}
@@ -411,18 +410,18 @@ const Signup = () => {
           textTransform: "none",
         }}
       >
-        <span className="font-semibold">Sign Up</span>
+        <span className="font-semibold">{t("signup.title")}</span>
       </Button>
-      <p className="signUp self-start font-normal">
-        Already have an account?{" "}
+      <p className="login self-start font-normal">
+        {t("signup.alreadyhaveacc")}{" "}
         <span
           className="text-text-blue-main font-semibold hover:text-blue-hover cursor-pointer"
           onClick={() => {
-            dispatch(clearSignup());
             dispatch(setAuthState("login"));
+            dispatch(clearSignup());
           }}
         >
-          Log In
+          {t("login.title")}
         </span>
       </p>
     </form>
