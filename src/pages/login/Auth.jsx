@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ForgotPass from "../../component/forgotPass/ForgotPass";
 import Login from "../../component/login/Login";
@@ -10,6 +11,9 @@ import { useTranslation } from "react-i18next";
 
 const Auth = () => {
   const dispatch = useDispatch();
+
+  const [currentBanner, setCurrentBanner] = useState(0);
+  const banners = ["/banner-0.png", "/banner-1.png", "/banner-2.png"];
   const { t } = useTranslation();
   const banners = [
     {
@@ -36,9 +40,18 @@ const Auth = () => {
     if (newLang !== null && newLang !== langState) {
       dispatch(setLangState(newLang));
       i18n.changeLanguage(newLang.toLowerCase());
-      console.log("đã đổi ngôn ngữ sang", newLang.toLowerCase());
+      console.log('đã đổi ngôn ngữ sang', newLang.toLowerCase())
     }
-  };
+};
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % banners.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [banners.length]);
 
   return (
     <div className="login bg-blue-background-1 flex h-screen justify-between flex-row">
@@ -59,9 +72,9 @@ const Auth = () => {
               padding: "0 5px",
               marginTop: "20px",
               borderRadius: "8px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',  
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
           >
             <ToggleButton
@@ -71,16 +84,16 @@ const Auth = () => {
                 width: "84px",
                 height: "32px",
                 padding: "0 15px",
-                border: "none",
-                borderRadius: "8px",
+                border: 'none',  
+                borderRadius: '8px', 
                 "&.Mui-selected": {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
                 "&.MuiToggleButtonGroup-firstButton": {
-                  borderTopRightRadius: "8px",
-                  borderBottomRightRadius: "8px",
-                },
+                  borderTopRightRadius: '8px',
+                  borderBottomRightRadius: '8px',
+                }
               }}
             >
               <img
@@ -97,15 +110,15 @@ const Auth = () => {
                 width: "84px",
                 height: "32px",
                 padding: "0 15px",
-                border: "none",
-                borderRadius: "8px",
+                border: 'none',  
+                borderRadius: '8px', 
                 "&.Mui-selected": {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
                 "&.MuiToggleButtonGroup-middleButton": {
-                  borderRadius: "8px",
-                },
+                  borderRadius: "8px"
+                }
               }}
             >
               <img
@@ -122,16 +135,16 @@ const Auth = () => {
                 width: "84px",
                 height: "32px",
                 padding: "0 15px",
-                border: "none",
-                borderRadius: "8px",
+                border: 'none',  
+                borderRadius: '8px', 
                 "&.Mui-selected": {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
                 "&.MuiToggleButtonGroup-lastButton": {
-                  borderTopLeftRadius: "8px",
-                  borderBottomLeftRadius: "8px",
-                },
+                  borderTopLeftRadius: '8px',
+                  borderBottomLeftRadius: '8px',
+                }
               }}
             >
               <img
@@ -144,6 +157,12 @@ const Auth = () => {
           </ToggleButtonGroup>
         </div>
       </div>
+      <div className="rightContainer hidden md:float-left md:flex items-center h-full">
+        <img
+          src={banners[currentBanner]}
+          alt="Banner"
+          className="h-auto w-auto "
+        />
       <div className="rightContainer hidden md:flex justify-center items-center h-full max-h-screen w-1/2 overflow-hidden bg-text-blue-main rounded-l-[120px]">
         <Swiper
           spaceBetween={10}
