@@ -31,6 +31,18 @@
       "passlength": "Mật khẩu phải có ít nhất 6 ký tự",
       "passmissmatch": "Mật khẩu không khớp",
       "invalidPhone": "Số điện thoại không hợp lệ"
+    },
+    "banner0": {
+      "title": "Quản lý thiết bị",
+      "description": "Quản lý các thiết bị với các mô hình dữ liệu phức tạp."
+    },
+    "banner1": {
+      "title": "Quản lý dữ liệu và phân tích",
+      "description": "Cho phép thu thập và truyền tải dữ liệu từ bất kỳ thiết bị IoT nào được kết nối."
+    },
+    "banner2": {
+      "title": "Ứng dụng bảng điều khiển",
+      "description": "Tạo bảng điều khiển tùy chỉnh của riêng bạn để quản lý thiết bị và trực quan hóa dữ liệu."
     }
   }
   

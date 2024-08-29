@@ -31,5 +31,17 @@
     "passlength": "The password must be at least 6 characters",
     "passmissmatch": "The passwords do not match",
     "invalidPhone": "The phone number is not valid"
+  },
+  "banner0": {
+    "title": "Device Management",
+    "description": "Manage devices with complex data models."
+  },
+  "banner1": {
+    "title": "Data Management and Analytics",
+    "description": "Enables data collection and data streaming from any IoT-connected device."
+  },
+  "banner2": {
+    "title": "Dashboard Applications",
+    "description": "Create your own custom dashboard for device management and data visualization."
   }
 }

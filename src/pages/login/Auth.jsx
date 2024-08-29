@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ForgotPass from "../../component/forgotPass/ForgotPass";
@@ -7,12 +7,32 @@ import Signup from "../../component/signup/Signup";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { setLangState } from "../../features/langState/LangState";
 import i18n from "../../utils/i18n";
+import Carousel from "react-material-ui-carousel";
+import { useTranslation } from "react-i18next";
 
 const Auth = () => {
   const dispatch = useDispatch();
-
-  const [currentBanner, setCurrentBanner] = useState(0);
-  const banners = ["/banner-0.png", "/banner-1.png", "/banner-2.png"];
+  const {t} = useTranslation();
+  const banners = [
+    {
+      image: "/banner-0.png",
+      title: t("banner0.title"),
+      description: t("banner0.description"),
+      className: "pb-[200px]",
+    },
+    {
+      image: "/banner-1.png",
+      title: t("banner1.title"),
+      description: t("banner1.description"),
+      className: "pt-[10%] pb-[200px]",
+    },
+    {
+      image: "/banner-2.png",
+      title: t("banner2.title"),
+      description: t("banner2.description"),
+      className: "pb-[100px]",
+    },
+  ];
 
   const { authState } = useSelector((state) => state.authState);
   const { langState } = useSelector((state) => state.langState);
@@ -21,18 +41,9 @@ const Auth = () => {
     if (newLang !== null && newLang !== langState) {
       dispatch(setLangState(newLang));
       i18n.changeLanguage(newLang.toLowerCase());
-      console.log('đã đổi ngôn ngữ sang', newLang.toLowerCase())
+      console.log("đã đổi ngôn ngữ sang", newLang.toLowerCase());
     }
-};
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBanner((prev) => (prev + 1) % banners.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [banners.length]);
+  };
 
   return (
     <div className="login bg-blue-background-1 flex h-screen justify-between">
@@ -53,9 +64,9 @@ const Auth = () => {
               padding: "0 5px",
               marginTop: "20px",
               borderRadius: "8px",
-              display: 'flex',  
-              alignItems: 'center',
-              justifyContent: 'center'
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             <ToggleButton
@@ -65,16 +76,16 @@ const Auth = () => {
                 width: "84px",
                 height: "32px",
                 padding: "0 15px",
-                border: 'none',  
-                borderRadius: '8px', 
+                border: "none",
+                borderRadius: "8px",
                 "&.Mui-selected": {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
                 "&.MuiToggleButtonGroup-firstButton": {
-                  borderTopRightRadius: '8px',
-                  borderBottomRightRadius: '8px',
-                }
+                  borderTopRightRadius: "8px",
+                  borderBottomRightRadius: "8px",
+                },
               }}
             >
               <img
@@ -91,15 +102,15 @@ const Auth = () => {
                 width: "84px",
                 height: "32px",
                 padding: "0 15px",
-                border: 'none',  
-                borderRadius: '8px', 
+                border: "none",
+                borderRadius: "8px",
                 "&.Mui-selected": {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
                 "&.MuiToggleButtonGroup-middleButton": {
-                  borderRadius: "8px"
-                }
+                  borderRadius: "8px",
+                },
               }}
             >
               <img
@@ -116,16 +127,16 @@ const Auth = () => {
                 width: "84px",
                 height: "32px",
                 padding: "0 15px",
-                border: 'none',  
-                borderRadius: '8px', 
+                border: "none",
+                borderRadius: "8px",
                 "&.Mui-selected": {
                   backgroundColor: "#77a5ee",
                   color: "#ffffff",
                 },
                 "&.MuiToggleButtonGroup-lastButton": {
-                  borderTopLeftRadius: '8px',
-                  borderBottomLeftRadius: '8px',
-                }
+                  borderTopLeftRadius: "8px",
+                  borderBottomLeftRadius: "8px",
+                },
               }}
             >
               <img
@@ -138,12 +149,40 @@ const Auth = () => {
           </ToggleButtonGroup>
         </div>
       </div>
-      <div className="rightContainer hidden md:float-left md:flex items-center h-full">
-        <img
-          src={banners[currentBanner]}
-          alt="Banner"
-          className="h-auto w-auto "
-        />
+      <div className="rightContainer hidden md:flex justify-center items-center h-full max-h-screen overflow-hidden w-1/2 bg-text-blue-main rounded-l-[120px]">
+        <Carousel
+          autoPlay
+          interval={3000}
+          // indicators={false} 
+          animation="slide"
+          navButtonsAlwaysVisible={false}
+          className="w-full p-6 max-h-screen"
+        >
+          {banners.map((banner, index) => (
+            <div
+              key={index}
+              className="relative w-full h-full inline-block p-6"
+            >
+              <div className="relative inline-block">
+                <img
+                  src={banner.image}
+                  alt={banner.title}
+                  className={`w-full h-auto p-6 max-h-screen block align-middle rounded-xl ${
+                    banner.className || ""
+                  }`}
+                  style={{
+                    overflowClipMargin: "content-box",
+                    overflow: "clip",
+                  }}
+                />
+              </div>
+              <div className=" flex absolute bottom-[100px] items-center flex-col justify-center left-0 px-[60px] z-50 text-white p-8 w-full">
+                <h3 className="text-2xl font-bold">{banner.title}</h3>
+                <p className="mt-2 text-lg">{banner.description}</p>
+              </div>
+            </div>
+          ))}
+        </Carousel>
       </div>
     </div>
   );
