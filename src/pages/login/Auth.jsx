@@ -160,7 +160,7 @@ const Auth = () => {
               <div
                 className="h-screen flex flex-col w-full p-6"
               >
-                <div className="flex max-h-[70%] items-end overflow-hidden">
+                <div className="flex max-h-[70%] overflow-hidden">
                   <img
                     src={banner.image}
                     alt={banner.title}
