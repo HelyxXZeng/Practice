@@ -6,32 +6,12 @@ import Signup from "../../component/signup/Signup";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { setLangState } from "../../features/langState/LangState";
 import i18n from "../../utils/i18n";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useTranslation } from "react-i18next";
 
 const Auth = () => {
   const dispatch = useDispatch();
 
   const [currentBanner, setCurrentBanner] = useState(0);
   const banners = ["/banner-0.png", "/banner-1.png", "/banner-2.png"];
-  const { t } = useTranslation();
-  const banners = [
-    {
-      image: "/banner-0.png",
-      title: t("banner0.title"),
-      description: t("banner0.description"),
-    },
-    {
-      image: "/banner-1.png",
-      title: t("banner1.title"),
-      description: t("banner1.description"),
-    },
-    {
-      image: "/banner-2.png",
-      title: t("banner2.title"),
-      description: t("banner2.description"),
-    },
-  ];
 
   const { authState } = useSelector((state) => state.authState);
   const { langState } = useSelector((state) => state.langState);
@@ -163,43 +143,6 @@ const Auth = () => {
           alt="Banner"
           className="h-auto w-auto "
         />
-      <div className="rightContainer hidden md:flex justify-center items-center h-full max-h-screen w-1/2 overflow-hidden bg-text-blue-main rounded-l-[120px]">
-        <Swiper
-          spaceBetween={10}
-          direction="horizontal"
-          slidesPerView={1}
-          // slidesPerGroup={1}
-          // slidesPerView={'auto'}
-        navigation
-        autoplay={{ delay: 3000 }}
-          className="w-full"
-        >
-          {banners.map((banner, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className="h-screen flex flex-col w-full p-6"
-              >
-                <div className="flex max-h-[70%] overflow-hidden">
-                  <img
-                    src={banner.image}
-                    alt={banner.title}
-                    className={` w-full p-6 min-h-[100%] rounded-xl  ${
-                      banner.className || ""
-                    }`}
-                    style={{
-                      overflowClipMargin: "content-box",
-                      overflow: "clip",
-                    }}
-                  />
-                </div>
-                <div className=" flex absolute bottom-[100px] items-center flex-col justify-center left-0 px-[60px] z-50 text-white p-8 w-full">
-                  <h3 className="text-2xl font-bold">{banner.title} + ${index} </h3>
-                  <p className="mt-2 text-lg">{banner.description}</p>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
       </div>
     </div>
   );
