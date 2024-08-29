@@ -1,36 +1,31 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import ForgotPass from "../../component/forgotPass/ForgotPass";
 import Login from "../../component/login/Login";
 import Signup from "../../component/signup/Signup";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { setLangState } from "../../features/langState/LangState";
 import i18n from "../../utils/i18n";
-import Carousel from "react-material-ui-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useTranslation } from "react-i18next";
 
 const Auth = () => {
   const dispatch = useDispatch();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const banners = [
     {
       image: "/banner-0.png",
       title: t("banner0.title"),
       description: t("banner0.description"),
-      className: "pb-[200px]",
     },
     {
       image: "/banner-1.png",
       title: t("banner1.title"),
       description: t("banner1.description"),
-      className: "pt-[10%] pb-[200px]",
     },
     {
       image: "/banner-2.png",
       title: t("banner2.title"),
       description: t("banner2.description"),
-      className: "pb-[100px]",
     },
   ];
 
@@ -46,7 +41,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="login bg-blue-background-1 flex h-screen justify-between">
+    <div className="login bg-blue-background-1 flex h-screen justify-between flex-row">
       <div className="leftContainer md:w-1/2 w-full flex justify-center items-center p-10">
         <div className="flex bg-blue-background-2 rounded-[32px] flex-col items-center p-10 space-y-4 w-[440px] min-h-[300px]">
           <img src="/TMA-icon.png" alt="TMA logo" className="h-[60px] w-auto" />
@@ -149,40 +144,43 @@ const Auth = () => {
           </ToggleButtonGroup>
         </div>
       </div>
-      <div className="rightContainer hidden md:flex justify-center items-center h-full max-h-screen overflow-hidden w-1/2 bg-text-blue-main rounded-l-[120px]">
-        <Carousel
-          autoPlay
-          interval={3000}
-          // indicators={false} 
-          animation="slide"
-          navButtonsAlwaysVisible={false}
-          className="w-full p-6 max-h-screen"
+      <div className="rightContainer hidden md:flex justify-center items-center h-full max-h-screen w-1/2 overflow-hidden bg-text-blue-main rounded-l-[120px]">
+        <Swiper
+          spaceBetween={10}
+          direction="horizontal"
+          slidesPerView={1}
+          // slidesPerGroup={1}
+          // slidesPerView={'auto'}
+        navigation
+        autoplay={{ delay: 3000 }}
+          className="w-full"
         >
           {banners.map((banner, index) => (
-            <div
-              key={index}
-              className="relative w-full h-full inline-block p-6"
-            >
-              <div className="relative inline-block">
-                <img
-                  src={banner.image}
-                  alt={banner.title}
-                  className={`w-full h-auto p-6 max-h-screen block align-middle rounded-xl ${
-                    banner.className || ""
-                  }`}
-                  style={{
-                    overflowClipMargin: "content-box",
-                    overflow: "clip",
-                  }}
-                />
+            <SwiperSlide key={index}>
+              <div
+                className="h-screen flex flex-col w-full p-6"
+              >
+                <div className="flex max-h-[70%] items-end overflow-hidden">
+                  <img
+                    src={banner.image}
+                    alt={banner.title}
+                    className={` w-full p-6 min-h-[100%] rounded-xl  ${
+                      banner.className || ""
+                    }`}
+                    style={{
+                      overflowClipMargin: "content-box",
+                      overflow: "clip",
+                    }}
+                  />
+                </div>
+                <div className=" flex absolute bottom-[100px] items-center flex-col justify-center left-0 px-[60px] z-50 text-white p-8 w-full">
+                  <h3 className="text-2xl font-bold">{banner.title} + ${index} </h3>
+                  <p className="mt-2 text-lg">{banner.description}</p>
+                </div>
               </div>
-              <div className=" flex absolute bottom-[100px] items-center flex-col justify-center left-0 px-[60px] z-50 text-white p-8 w-full">
-                <h3 className="text-2xl font-bold">{banner.title}</h3>
-                <p className="mt-2 text-lg">{banner.description}</p>
-              </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </Carousel>
+        </Swiper>
       </div>
     </div>
   );
